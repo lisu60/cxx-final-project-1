@@ -1,6 +1,6 @@
 [
 	{
-		"CourseName" : "å¾®ç§¯åˆ†ï¼ˆä¸€ï¼‰ä¸‹",
+		"CourseName" : "Î¢»ı·Ö£¨Ò»£©ÏÂ",
 		"Lectures" : [
 			{
 				"ClassTime" : {
@@ -10,7 +10,7 @@
 					],
 					"DayOfWeek" : 1
 				},
-				"Location" : "ä¸œä¹æ¥¼B402",
+				"Location" : "¶«¾ÅÂ¥B402",
 				"WeekNumber" : [
 					1,
 					2,
@@ -37,7 +37,7 @@
 					],
 					"DayOfWeek" : 3
 				},
-				"Location" : "ä¸œä¹æ¥¼B402",
+				"Location" : "¶«¾ÅÂ¥B402",
 				"WeekNumber" : [
 					1,
 					2,
@@ -64,7 +64,7 @@
 					],
 					"DayOfWeek" : 5
 				},
-				"Location" : "ä¸œä¹æ¥¼B402",
+				"Location" : "¶«¾ÅÂ¥B402",
 				"WeekNumber" : [
 					1,
 					2,
@@ -83,6 +83,6 @@
 				]
 			}
 		],
-		"Teacher" : "è°¢é¹å‰¯æ•™æˆ"
+		"Teacher" : "Ğ»Åô¸±½ÌÊÚ"
 	}
 ]
