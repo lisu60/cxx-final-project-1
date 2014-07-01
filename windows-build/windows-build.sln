@@ -2,6 +2,9 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "windows-build", "windows-build\windows-build.vcxproj", "{A963C478-FCF0-4BEF-AF73-3D03D5C0B501}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7159099C-8945-40C5-80A3-52A02716A0CC} = {7159099C-8945-40C5-80A3-52A02716A0CC}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JsonBox", "..\JsonBox\ide\VS2010\JsonBox\JsonBox\JsonBox.vcxproj", "{7159099C-8945-40C5-80A3-52A02716A0CC}"
 EndProject
