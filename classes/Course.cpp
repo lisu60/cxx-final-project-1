@@ -10,8 +10,8 @@ using namespace timetable;
 
 Course::Course()
 {
-	teacher="";
-	courseName="";
+	teacher=new string("");
+	courseName=new string("");
 }
 
 Course::Course(Value& value)
@@ -19,35 +19,38 @@ Course::Course(Value& value)
 	loadFromValue(value);
 }
 
-Course::Course(const Course& course)
+
+Course::~Course()
 {
-	lectures=vector<Lecture>(course.lectures);
-	teacher=string(course.teacher);
-	courseName=string(course.courseName);
+	cout<<"Course on destroy"<<endl;
+	delete lectures;
+	delete teacher;
+	delete courseName;
 }
 
 void Course::loadFromValue(Value& value)
 {
-	teacher=value["Teacher"].getString();
-	courseName=value["CourseName"].getString();
+	teacher=new string(value["Teacher"].getString());
+	courseName=new string(value["CourseName"].getString());
 	Array array=value["Lectures"].getArray();
+	lectures=new vector<Lecture*>();
 	for(Array::iterator iter=array.begin(); iter!=array.end(); ++iter)
 	{
-		lectures.push_back(Lecture(*iter));
+		lectures->push_back(new Lecture(*iter));
 	}
 }
 
-vector<Lecture> Course::getLectures()
+vector<Lecture*>* Course::getLectures()
 {
 	return lectures;
 }
 
-string Course::getTeacher()
+string* Course::getTeacher()
 {
 	return teacher;
 }
 
-string Course::getCourseName()
+string* Course::getCourseName()
 {
 	return courseName;
 }

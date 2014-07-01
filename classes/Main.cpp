@@ -15,7 +15,7 @@ using std::string;
 using std::vector;
 
 Value value;
-vector<Course> courses;
+vector<Course*> courses;
 
 
 void listAll();
@@ -35,7 +35,7 @@ int main(int argc, char* argv[])
 	Array array=value.getArray();
 	for(Array::iterator iter=array.begin(); iter!=array.end(); ++iter)
 	{
-		courses.push_back(Course(*iter));
+		courses.push_back(new Course(*iter));
 	}
 	
 
@@ -49,9 +49,7 @@ int main(int argc, char* argv[])
 	while(1)
 	{
 		cout<<endl<<endl<<endl;
-		cout<<KCYN;
-		cout<<"å½“å‰æœ‰"<<courses.size()<<"é—¨è¯¾"<<endl;
-		cout<<KNRM;
+		cout<<"µ±Ç°ÓÐ"<<courses.size()<<"ÃÅ¿Î"<<endl;
 		cout<<SELECT_OPER<<endl;
 		for(int i=0; i<4; i++)
 		{
@@ -90,9 +88,10 @@ void listAll()
 {
 	int i=0;
 	cout<<endl;
-	for(vector<Course>::iterator iter=courses.begin(); iter!=courses.end(); ++iter, ++i)
+	for(vector<Course*>::iterator iter=courses.begin(); iter!=courses.end(); ++iter, ++i)
 	{
-		cout<<i<<"ã€"<<iter->getCourseName()<<'\t'<<iter->getTeacher()<<endl;
+		Course* pcour=*iter;
+		cout<<i<<"¡¢"<<*(pcour->getCourseName())<<'\t'<<*(pcour->getTeacher())<<endl;
 	}
 }
 
@@ -117,21 +116,23 @@ void listDetail()
 			cout<<WRONG_ENTER<<endl<<endl;
 	}
 
-	Course cour=courses[selection];
-	cout<<COURSE_NAME<<cour.getCourseName()<<endl;
-	cout<<COURSE_TEACHER<<cour.getTeacher()<<endl;
+	Course* pcour=courses[selection];
+	cout<<COURSE_NAME<<*pcour->getCourseName()<<endl;
+	cout<<COURSE_TEACHER<<*pcour->getTeacher()<<endl;
 	cout<<COURSE_LECTURES<<endl;
-	for(vector<Lecture>::iterator iter=cour.getLectures().begin(); iter!=cour.getLectures().end(); ++iter)
+	vector<Lecture*>* lecs=pcour->getLectures();
+	vector<Lecture*>::iterator iter=lecs->begin();
+	for(iter=lecs->begin(); iter!=lecs->end(); ++iter)
 	{
-		ClassTime classTime=iter->getClassTime();
-		cout<<'\t'<<iter->getLocation()<<endl;
-		cout<<'\t'<<DAY_OF_WEEK[classTime.getDayOfWeek()]<<'\t';
+		ClassTime* classTime=(*iter)->getClassTime();
+		cout<<'\t'<<*(*iter)->getLocation()<<endl;
+		cout<<'\t'<<DAY_OF_WEEK[classTime->getDayOfWeek()]<<'\t';
 		int i;
-		for(i=0; i<classTime.getClassNumber().size()-1; i++)
+		for(i=0; i<classTime->getClassNumber()->size()-1; i++)
 		{
-			cout<<classTime.getClassNumber()[i]<<", ";
+			cout<<classTime->getClassNumber()->at(i)<<", ";
 		}
-		cout<<classTime.getClassNumber()[i]<<"èŠ‚"<<endl;
+		cout<<classTime->getClassNumber()->at(i)<<"½Ú"<<endl;
 	}
 
 

@@ -13,23 +13,25 @@ timetable::ClassTime::ClassTime()
 
 timetable::ClassTime::ClassTime(Value& value)
 {
+	classNumber=new vector<int>();
 	loadFromValue(value);
 }
 
-timetable::ClassTime::ClassTime(const ClassTime& classTime)
+
+timetable::ClassTime::~ClassTime()
 {
-	ClassTime time;
-	time.dayOfWeek=classTime.dayOfWeek;
-	time.classNumber=vector<int>(classTime.classNumber);
+	cout<<"ClassTime on destroy"<<endl;
+	delete classNumber;
 }
 
 void timetable::ClassTime::loadFromValue(Value& value)
 {
 	dayOfWeek=value["DayOfWeek"].getInt();
 	Array array=value["ClassNumber"].getArray();
+	classNumber=new vector<int>();
 	for(Array::iterator iter=array.begin(); iter!=array.end(); ++iter)
 	{
-		classNumber.push_back(iter->getInt());
+		classNumber->push_back(iter->getInt());
 	}
 }
 
@@ -38,7 +40,7 @@ int timetable::ClassTime::getDayOfWeek()
 	return dayOfWeek;
 }
 
-vector<int> timetable::ClassTime::getClassNumber()
+vector<int>* timetable::ClassTime::getClassNumber()
 {
 	return classNumber;
 }

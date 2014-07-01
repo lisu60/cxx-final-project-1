@@ -14,15 +14,15 @@ namespace timetable
 			public:
 					ClassTime();
 					ClassTime(Value&);
-					ClassTime(const ClassTime&);
+					~ClassTime();
 
 					void loadFromValue(Value&);
 
 					int getDayOfWeek();
-					vector<int> getClassNumber();
+					vector<int>* getClassNumber();
 			private:
 					int dayOfWeek;
-					vector<int> classNumber;
+					vector<int>* classNumber;
 
 	};
 }

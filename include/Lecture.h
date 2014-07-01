@@ -17,18 +17,18 @@ namespace timetable
 			public:
 					Lecture();
 					Lecture(Value&);
-					Lecture(const Lecture&);
+					~Lecture();
 
 					void loadFromValue(Value&);
 
-					string getLocation();
-					vector<int> getWeekNumber();
-					ClassTime getClassTime();
+					string* getLocation();
+					vector<int>* getWeekNumber();
+					ClassTime* getClassTime();
 
 			private:
-					string location;
-					vector<int> weekNumber;
-					ClassTime classTime;
+					string* location;
+					vector<int>* weekNumber;
+					ClassTime* classTime;
 	};
 }
 

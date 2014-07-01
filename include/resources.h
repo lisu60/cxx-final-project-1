@@ -6,31 +6,31 @@ const string KNRM="\x1B[0m";
 
 const string DAY_OF_WEEK[]=
 {
-	"å‘¨æ—¥",
-	"å‘¨ä¸€",
-	"å‘¨äºŒ",
-	"å‘¨ä¸‰",
-	"å‘¨å››",
-	"å‘¨äº”",
-	"å‘¨å…­"
+	"ÖÜÈÕ",
+	"ÖÜÒ»",
+	"ÖÜ¶ş",
+	"ÖÜÈı",
+	"ÖÜËÄ",
+	"ÖÜÎå",
+	"ÖÜÁù"
 };
 
 const string DIVIDER=
 "-----------------------------------------------------------------";
 const string PROMPT=">>> ";
-const string TITLE="\t\tè¶…çº§ç¥å¥‡è¶…çº§å‰å®³è¯¾è¡¨æŸ¥è¯¢ç®¡ç†ç³»ç»Ÿ";
-const string SELECT_OPER="è¯·é€‰æ‹©æ“ä½œ";
+const string TITLE="\t\t³¬¼¶ÉñÆæ³¬¼¶À÷º¦¿Î±í²éÑ¯¹ÜÀíÏµÍ³";
+const string SELECT_OPER="ÇëÑ¡Ôñ²Ù×÷";
 const string OPERATIONS[]={
-	"1ã€åˆ—å‡ºæ‰€æœ‰è¯¾ç¨‹",
-	"2ã€æŸ¥çœ‹è¯¾ç¨‹è¯¦æƒ…",
-	"3ã€æ·»åŠ è¯¾ç¨‹",
-	"0ã€é€€å‡º"
+	"1¡¢ÁĞ³öËùÓĞ¿Î³Ì",
+	"2¡¢²é¿´¿Î³ÌÏêÇé",
+	"3¡¢Ìí¼Ó¿Î³Ì",
+	"0¡¢ÍË³ö"
 };
-const string ENTER="è¯·è¾“å…¥:";
-const string WRONG_ENTER="è¾“å…¥æœ‰è¯¯";
-const string COURSE_NUMBER="è¯·è¾“å…¥è¯¾ç¨‹ç¼–å·:";
-const string NO_COURSES="å½“å‰æ²¡æœ‰è¯¾ç¨‹";
-const string COURSE_NAME="è¯¾ç¨‹åç§°:";
-const string COURSE_TEACHER="ä»»è¯¾æ•™å¸ˆ:";
-const string COURSE_LECTURES="æ—¶é—´åœ°ç‚¹:";
-const string COURSE_WEEKS="ä¸Šè¯¾å‘¨æ¬¡:";
+const string ENTER="ÇëÊäÈë:";
+const string WRONG_ENTER="ÊäÈëÓĞÎó";
+const string COURSE_NUMBER="ÇëÊäÈë¿Î³Ì±àºÅ:";
+const string NO_COURSES="µ±Ç°Ã»ÓĞ¿Î³Ì";
+const string COURSE_NAME="¿Î³ÌÃû³Æ:";
+const string COURSE_TEACHER="ÈÎ¿Î½ÌÊ¦:";
+const string COURSE_LECTURES="Ê±¼äµØµã:";
+const string COURSE_WEEKS="ÉÏ¿ÎÖÜ´Î:";

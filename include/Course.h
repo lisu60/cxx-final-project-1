@@ -17,17 +17,17 @@ namespace timetable
 			public:
 					Course();
 					Course(Value&);
-					Course(const Course&);
+					~Course();
 
 					void loadFromValue(Value&);
 
-					vector<Lecture> getLectures();
-					string getTeacher();
-					string getCourseName();
+					vector<Lecture*>* getLectures();
+					string* getTeacher();
+					string* getCourseName();
 			private:
-					vector<Lecture> lectures;
-					string teacher;
-					string courseName;
+					vector<Lecture*>* lectures;
+					string* teacher;
+					string* courseName;
 	};
 }
 

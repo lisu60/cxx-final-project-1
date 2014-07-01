@@ -8,7 +8,7 @@ using namespace JsonBox;
 
 timetable::Lecture::Lecture()
 {
-	location="";
+	location=new string("");
 }
 
 timetable::Lecture::Lecture(Value& value)
@@ -16,36 +16,39 @@ timetable::Lecture::Lecture(Value& value)
 	loadFromValue(value);
 }
 
-timetable::Lecture::Lecture(const Lecture& lec)
+
+timetable::Lecture::~Lecture()
 {
-	location=string(lec.location);
-	weekNumber=vector<int>(lec.weekNumber);
-	classTime=timetable::ClassTime(lec.classTime);
+	cout<<"Lecture on destroy"<<endl;
+	delete location;
+	delete weekNumber;
+	delete classTime;
 }
 
 void timetable::Lecture::loadFromValue(Value& value)
 {
-	location=value["Location"].getString();
-	classTime=ClassTime(value["ClassTime"]);
+	location=new string(value["Location"].getString());
+	classTime=new ClassTime(value["ClassTime"]);
 	Array array=value["WeekNumber"].getArray();
+	weekNumber=new vector<int>();
 	for(Array::iterator iter=array.begin(); iter!=array.end(); ++iter)
 	{
-		weekNumber.push_back(iter->getInt());
+		weekNumber->push_back(iter->getInt());
 	}
 }
 
-string timetable::Lecture::getLocation()
+string* timetable::Lecture::getLocation()
 {
 	return location;
 }
 
-vector<int> timetable::Lecture::getWeekNumber()
+vector<int>* timetable::Lecture::getWeekNumber()
 {
 	return weekNumber;
 }
 
 
-timetable::ClassTime timetable::Lecture::getClassTime()
+timetable::ClassTime* timetable::Lecture::getClassTime()
 {
 	return classTime;
 }
