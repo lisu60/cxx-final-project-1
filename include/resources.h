@@ -1,8 +1,6 @@
 ﻿#include<string>
 using std::string;
 
-const string KCYN="\x1B[1m\x1B[36m";
-const string KNRM="\x1B[0m";
 
 const string DAY_OF_WEEK[]=
 {
@@ -35,3 +33,14 @@ const string COURSE_NAME="课程名称:";
 const string COURSE_TEACHER="任课教师:";
 const string COURSE_LECTURES="时间地点:";
 const string COURSE_WEEKS="上课周次:";
+
+const string ENTER_COURSE_NAME="请输入课程名称:";
+const string ENTER_TEACHER_NAME="请输入教师:";
+const string WHETHER_ADD_LECTURE="是否添加上课时间？[y/n]";
+const string ENTER_LOCATION="请输入上课地点:";
+const string ENTER_DAY_OF_WEEK="周几？(请输入数字，0为周日，1为周一...)";
+const string ENTER_CLASS_NUMBER="第几节课？(请输入数字，多节课用空格隔开)";
+const string ENTER_WEEK_NUMBER="哪几周？";
+
+const string ENTER_COURSE_TO_DELETE="请输入要删除的课程编号:";
+

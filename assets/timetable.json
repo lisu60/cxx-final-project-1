@@ -1,88 +1,88 @@
-﻿[
-  {
-    "Lectures": [
-      {
-        "Location": "东九楼B402",
-        "ClassTime": {
-          "DayOfWeek": 1,
-          "ClassNumber": [
-            1,
-            2
-          ]
-        },
-        "WeekNumber": [
-          1,
-          2,
-          3,
-          4,
-          5,
-          6,
-          7,
-          8,
-          9,
-          10,
-          11,
-          12,
-          14,
-          15,
-          16
-        ]
-      },
-      {
-        "Location": "东九楼B402",
-        "ClassTime": {
-          "DayOfWeek": 3,
-          "ClassNumber": [
-            3,
-            4
-          ]
-        },
-        "WeekNumber": [
-          1,
-          2,
-          3,
-          4,
-          5,
-          6,
-          7,
-          8,
-          9,
-          10,
-          11,
-          12,
-          14,
-          15,
-          16
-        ]
-      },
-      {
-        "Location": "东九楼B402",
-        "ClassTime": {
-          "DayOfWeek": 5,
-          "ClassNumber": [
-            7,
-            8
-          ]
-        },
-        "WeekNumber": [
-          1,
-          2,
-          3,
-          4,
-          5,
-          6,
-          7,
-          8,
-          9,
-          10,
-          11,
-          12,
-          14,
-          15
-        ]
-      }
-    ],
-    "Teacher": "谢鹏副教授",
-    "CourseName": "微积分（一）下"
-  }
+[
+	{
+		"CourseName" : "微积分（一）下",
+		"Lectures" : [
+			{
+				"ClassTime" : {
+					"ClassNumber" : [
+						1,
+						2
+					],
+					"DayOfWeek" : 1
+				},
+				"Location" : "东九楼B402",
+				"WeekNumber" : [
+					1,
+					2,
+					3,
+					4,
+					5,
+					6,
+					7,
+					8,
+					9,
+					10,
+					11,
+					12,
+					14,
+					15,
+					16
+				]
+			},
+			{
+				"ClassTime" : {
+					"ClassNumber" : [
+						3,
+						4
+					],
+					"DayOfWeek" : 3
+				},
+				"Location" : "东九楼B402",
+				"WeekNumber" : [
+					1,
+					2,
+					3,
+					4,
+					5,
+					6,
+					7,
+					8,
+					9,
+					10,
+					11,
+					12,
+					14,
+					15,
+					16
+				]
+			},
+			{
+				"ClassTime" : {
+					"ClassNumber" : [
+						7,
+						8
+					],
+					"DayOfWeek" : 5
+				},
+				"Location" : "东九楼B402",
+				"WeekNumber" : [
+					1,
+					2,
+					3,
+					4,
+					5,
+					6,
+					7,
+					8,
+					9,
+					10,
+					11,
+					12,
+					14,
+					15
+				]
+			}
+		],
+		"Teacher" : "谢鹏副教授"
+	}
 ]

@@ -1,5 +1,6 @@
 ﻿#include<iostream>
 #include<stdio.h>
+#include<fstream>
 #include"JsonBox.h"
 #include"resources.h"
 #include"platform_resources.h"
@@ -17,6 +18,7 @@ using std::vector;
 Value value;
 vector<Course*> courses;
 
+char* filePath;
 
 void listAll();
 void listDetail();
@@ -31,7 +33,8 @@ int main(int argc, char* argv[])
 		cout<<"Usage: timetable <path>"<<endl;
 		return 0;
 	}
-	value.loadFromFile(argv[1]);
+	filePath=argv[1];
+	value.loadFromFile(filePath);
 	
 	Array array=value.getArray();
 	for(Array::iterator iter=array.begin(); iter!=array.end(); ++iter)
@@ -52,7 +55,7 @@ int main(int argc, char* argv[])
 		cout<<endl<<endl<<endl;
 		cout<<"当前有"<<courses.size()<<"门课"<<endl;
 		cout<<SELECT_OPER<<endl;
-		for(int i=0; i<4; i++)
+		for(int i=0; i<5; i++)
 		{
 			cout<<OPERATIONS[i]<<endl;
 		}
@@ -140,7 +143,7 @@ void listDetail()
 		
 		vector<int>* weeks=(*iter)->getWeekNumber();
 		vector<int>::iterator iterw=weeks->begin();
-		int begin=1, last=0, curr;
+		int begin=*iterw, last=begin-1, curr;
 		while(1)
 		{
 			if(iterw==weeks->end())
@@ -184,12 +187,108 @@ void listDetail()
 
 void addCourse()
 {
-	
+	Value cour;
+	string str;
+	int integer;
+
+
+
+	cout<<ENTER_COURSE_NAME<<endl;
+	cout<<PROMPT;
+	cin.clear();
+	cin>>str;
+	cour["CourseName"]=str;
+	cout<<ENTER_TEACHER_NAME<<endl;
+	cout<<PROMPT;
+	cin.clear();
+	cin>>str;
+	cour["Teacher"]=str;
+
+	char choice='\0';
+	int i=0;
+	while(choice!='n')
+	{
+		cout<<WHETHER_ADD_LECTURE<<endl;
+		cout<<PROMPT;
+		cin.clear();
+		cin>>choice;
+		switch(choice)
+		{
+				case 'y':
+						cout<<ENTER_LOCATION<<endl;
+						cout<<PROMPT;
+						cin.clear();
+						cin>>str;
+						cour["Lectures"][size_t(i)]["Location"]=str;
+						cout<<ENTER_DAY_OF_WEEK<<endl;
+						cout<<PROMPT;
+						cin.clear();
+						cin>>integer;
+						cour["Lectures"][size_t(i)]["ClassTime"]["DayOfWeek"]=integer;
+						cout<<ENTER_CLASS_NUMBER<<endl;
+						cout<<PROMPT;
+						cin.clear();
+						for(int j=0; cin>>integer; j++)
+						{
+							cour["Lectures"][size_t(i)]["ClassTime"]["ClassNumber"][size_t(j)]=integer;
+						}
+						cout<<ENTER_WEEK_NUMBER<<endl;
+						cout<<PROMPT;
+						cin.clear();
+						for(int j=0; cin>>integer; j++)
+						{
+							cour["Lectures"][size_t(i)]["WeekNumber"][size_t(j)]=integer;
+						}
+						i++;
+						break;
+				case 'n':
+						break;
+				default: cout<<WRONG_ENTER<<endl;
+
+		}
+		
+	}
+	value[size_t(value.getArray().size())]=cour;
+	ofstream file;
+	file.open(filePath);
+	file<<value<<endl;
+	file.close();
+
+	value.loadFromFile(filePath);
+	Array array=value.getArray();
+	courses.clear();
+	for(Array::iterator iter=array.begin(); iter!=array.end(); ++iter)
+	{
+		courses.push_back(new Course(*iter));
+	}
 
 }
 
 void deleteCourse()
 {
 	listAll();
+	cout<<ENTER_COURSE_TO_DELETE<<endl;
+	cout<<PROMPT;
+	int choice;
+	cin>>choice;
+	if(choice>=0 && value.getArray().size())
+	{
+		Array array=value.getArray();
+		Array::iterator iter=array.begin();
+		array.erase(iter+choice);
+		value=Value(array);
+	}
+	ofstream file;
+	file.open(filePath);
+	file<<value<<endl;
+	file.close();
+
+	value.loadFromFile(filePath);
+	Array array=value.getArray();
+	courses.clear();
+	for(Array::iterator iter=array.begin(); iter!=array.end(); ++iter)
+	{
+		courses.push_back(new Course(*iter));
+	}
 }
 
