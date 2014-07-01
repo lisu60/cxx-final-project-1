@@ -1,4 +1,4 @@
-#include<iostream>
+ï»¿#include<iostream>
 #include<stdio.h>
 #include"JsonBox.h"
 #include"resources.h"
@@ -21,6 +21,7 @@ vector<Course*> courses;
 void listAll();
 void listDetail();
 void addCourse();
+void deleteCourse();
 
 
 int main(int argc, char* argv[])
@@ -49,7 +50,7 @@ int main(int argc, char* argv[])
 	while(1)
 	{
 		cout<<endl<<endl<<endl;
-		cout<<"µ±Ç°ÓÐ"<<courses.size()<<"ÃÅ¿Î"<<endl;
+		cout<<"å½“å‰æœ‰"<<courses.size()<<"é—¨è¯¾"<<endl;
 		cout<<SELECT_OPER<<endl;
 		for(int i=0; i<4; i++)
 		{
@@ -72,6 +73,9 @@ int main(int argc, char* argv[])
 				case 3:
 						addCourse();
 						break;
+				case 4:
+						deleteCourse();
+						break;
 				default:
 						cout<<WRONG_ENTER;
 						break;
@@ -91,7 +95,7 @@ void listAll()
 	for(vector<Course*>::iterator iter=courses.begin(); iter!=courses.end(); ++iter, ++i)
 	{
 		Course* pcour=*iter;
-		cout<<i<<"¡¢"<<*(pcour->getCourseName())<<'\t'<<*(pcour->getTeacher())<<endl;
+		cout<<i<<"ã€"<<*(pcour->getCourseName())<<'\t'<<*(pcour->getTeacher())<<endl;
 	}
 }
 
@@ -121,18 +125,57 @@ void listDetail()
 	cout<<COURSE_TEACHER<<*pcour->getTeacher()<<endl;
 	cout<<COURSE_LECTURES<<endl;
 	vector<Lecture*>* lecs=pcour->getLectures();
-	vector<Lecture*>::iterator iter=lecs->begin();
-	for(iter=lecs->begin(); iter!=lecs->end(); ++iter)
+	for(vector<Lecture*>::iterator iter=lecs->begin(); iter!=lecs->end(); ++iter)
 	{
 		ClassTime* classTime=(*iter)->getClassTime();
 		cout<<'\t'<<*(*iter)->getLocation()<<endl;
 		cout<<'\t'<<DAY_OF_WEEK[classTime->getDayOfWeek()]<<'\t';
+
 		int i;
 		for(i=0; i<classTime->getClassNumber()->size()-1; i++)
 		{
 			cout<<classTime->getClassNumber()->at(i)<<", ";
 		}
-		cout<<classTime->getClassNumber()->at(i)<<"½Ú"<<endl;
+		cout<<classTime->getClassNumber()->at(i)<<"èŠ‚"<<'\t';
+		
+		vector<int>* weeks=(*iter)->getWeekNumber();
+		vector<int>::iterator iterw=weeks->begin();
+		int begin=1, last=0, curr;
+		while(1)
+		{
+			if(iterw==weeks->end())
+			{
+				if(begin==curr)
+				{
+					cout<<curr;
+				}
+				else
+				{
+					cout<<begin<<"-"<<curr;
+				}
+				cout<<" å‘¨"<<endl;
+				break;
+			}
+			else
+			{
+				curr=*iterw;
+				if(curr-last!=1)
+				{
+					if(last==begin)
+					{
+						cout<<last<<", ";
+					}
+					else
+					{
+						cout<<begin<<"-"<<last<<", ";
+					}
+					begin=curr;
+				}
+				last=curr;
+			}
+			++iterw;
+		}
+
 	}
 
 
@@ -140,5 +183,13 @@ void listDetail()
 
 
 void addCourse()
-{}
+{
+	
+
+}
+
+void deleteCourse()
+{
+	listAll();
+}
 
