@@ -40,5 +40,5 @@ int timetable::ClassTime::getDayOfWeek()
 
 vector<int> timetable::ClassTime::getClassNumber()
 {
-	return vector<int>(classNumber); //return a copy of classNumber
+	return classNumber;
 }

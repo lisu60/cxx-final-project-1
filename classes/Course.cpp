@@ -39,15 +39,15 @@ void Course::loadFromValue(Value& value)
 
 vector<Lecture> Course::getLectures()
 {
-	return vector<Lecture>(lectures);
+	return lectures;
 }
 
 string Course::getTeacher()
 {
-	return string(teacher);
+	return teacher;
 }
 
 string Course::getCourseName()
 {
-	return string(courseName);
+	return courseName;
 }

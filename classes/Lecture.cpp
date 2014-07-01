@@ -36,15 +36,16 @@ void timetable::Lecture::loadFromValue(Value& value)
 
 string timetable::Lecture::getLocation()
 {
-	return string(location);// return a copy of location
+	return location;
 }
 
 vector<int> timetable::Lecture::getWeekNumber()
 {
-	return vector<int>(weekNumber); //return a copy of weekNumber
+	return weekNumber;
 }
+
 
 timetable::ClassTime timetable::Lecture::getClassTime()
 {
-	return timetable::ClassTime(classTime); //return a copy of classTime
+	return classTime;
 }
